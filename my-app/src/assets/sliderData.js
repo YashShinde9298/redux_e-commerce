@@ -24,11 +24,11 @@ export const navbarData = [
     },
     {
         id: 2,
-        name: "Furniture"
+        name: "Electronics"
     },
     {
         id: 3,
-        name: "Electronics"
+        name: "Furniture"
     },
     {
         id: 4,
