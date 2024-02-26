@@ -60,10 +60,10 @@ function ProductDetail() {
     }
 
     return (<>
-        <div className="flex justify-center mt-20">
+        <div className="flex justify-center mt-20 mb-20">
             <div className="w-[48%] flex justify-center items-center">
                 <button onClick={backwardImage} className="p-1 rounded-full shadow-lg mx-2 shadow-gray-300"><GrPrevious className="font-bold text-2xl" /></button>
-                <img src={images[imageIndex]} alt={title} className="h-[500px] transition duration-500 ease-in-out" />
+                <img src={images[imageIndex]} alt={title} className="h-[500px] transition duration-500 ease-in-out rounded" />
                 <button onClick={forwardImage} className="p-1 rounded-full shadow-lg mx-2 shadow-gray-300"><GrNext className="font-bold text-2xl" /></button>
             </div>
             <div className="flex flex-col justify-center gap-y-3 w-[48%] ps-9">

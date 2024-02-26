@@ -1,20 +1,36 @@
-import { useSelector } from "react-redux";
+import axios from "axios";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { setProducts } from "../redux/actions/productActions";
+import ProductComponent from "./ProductComponent";
 
 function CategoryComponent() {
 
     const { categoryId } = useParams();
     console.log("CategoryId : ", categoryId);
+    const dispatch = useDispatch()
 
-    const products = useSelector(state => state.allProducts.products);
-    console.log("products : ", products);
 
-    const filteredProducts = products.filter(product => product.category.id === categoryId);
+    const fetchProducts = async () => {
+        const response = await axios.get(`https://api.escuelajs.co/api/v1/products/?categoryId=${categoryId}`)
+            .catch(err => {
+                console.log("Err : ", err);
+            })
+        console.log(response.data);
+        dispatch(setProducts(response.data));
+    }
 
-    console.log("filteredProducts : ", filteredProducts);
+    useEffect(() => {
+        fetchProducts();
+    }, [categoryId])
+
+
 
     return (<>
-
+        <div className="flex gap-5 flex-wrap justify-center mx-auto w-[80%] mt-5 mb-5">
+            <ProductComponent />
+        </div>
     </>);
 }
 

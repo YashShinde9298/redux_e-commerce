@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, deleteFromCart, placeOrder, removeFromCart } from "../redux/actions/productActions";
 import { PiShoppingCartDuotone } from "react-icons/pi";
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
 
 function Cart() {
 
@@ -11,6 +13,11 @@ function Cart() {
     console.log(totalPrice);
 
     const dispatch = useDispatch();
+
+    const handlePlaceOrder = () => {
+        dispatch(placeOrder(cart));
+        toast.success("Your order has been placed successfully!");
+    }
 
     return (<>
         {cart.length > 0 ?
@@ -72,7 +79,7 @@ function Cart() {
                         </p>
                         <button
                             className='font-bold text-xl bg-green-500 rounded text-white p-1 w-[150px]'
-                            onClick={() => dispatch(placeOrder(cart))}
+                            onClick={handlePlaceOrder}
                         >Place Order</button>
                     </div>
                 </div>
@@ -83,6 +90,7 @@ function Cart() {
                 <h1 className='font-bold text-3xl'>Your cart is empty</h1>
             </div>)
         }
+        <ToastContainer />
     </>);
 }
 

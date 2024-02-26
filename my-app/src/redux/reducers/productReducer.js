@@ -1,3 +1,4 @@
+import { sliderData } from "../../assets/sliderData"
 import { ActionTypes } from "../constants/actionTypes"
 
 const intialState = {
@@ -8,6 +9,11 @@ const cartState = {
     cart: [],
     totalQuantity: 0,
     totalPrice: 0
+}
+
+const sliderState = {
+    value: 0,
+    length: sliderData.length
 }
 
 export const productReducer = (state = intialState, { type, payload }) => {
@@ -90,8 +96,6 @@ export const cartReducer = (state = cartState, { type, payload }) => {
                 }
             }
 
-
-
         case ActionTypes.DELETE_FROM_CART:
             const filteredCart = state.cart.filter(product => product.id !== payload.id);
             return {
@@ -109,10 +113,27 @@ export const cartReducer = (state = cartState, { type, payload }) => {
                 totalQuantity: 0
             }
 
-
-
         default:
             return state;
     }
 }
 
+
+export const sliderReducer = (state = sliderState, { type, payload }) => {
+    switch (type) {
+        case ActionTypes.NEXT_SLIDE:
+            return {
+                ...state,
+                value: payload >= state.length ? 0 : payload
+            }
+
+        case ActionTypes.PREV_SLIDE:
+            return {
+                ...state,
+                value: payload < 0 ? state.length - 1 : payload
+            }
+
+        default:
+            return state;
+    }
+}

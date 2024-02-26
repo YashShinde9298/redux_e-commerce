@@ -48,3 +48,17 @@ export const placeOrder = (orderData) => {
         payload: orderData
     }
 }
+
+export const nextSlide = (payload) => {
+    return {
+        type: ActionTypes.NEXT_SLIDE,
+        payload
+    }
+}
+
+export const prevSlide = (payload) => {
+    return {
+        type: ActionTypes.PREV_SLIDE,
+        payload
+    }
+}

@@ -4,6 +4,7 @@ import ProductDetail from "./components/ProductDetail"
 import Cart from "./components/Cart"
 import Navbar from "./components/Navbar"
 import CategoryComponent from "./components/CategoryComponent"
+import Footer from "./components/Footer"
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route exact path='/category/:categoryId' Component={CategoryComponent} />
           <Route exact path="/cart" Component={Cart} />
         </Routes>
+        <Footer />
       </Router>
     </>
   )
