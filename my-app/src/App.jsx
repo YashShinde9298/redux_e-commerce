@@ -5,6 +5,7 @@ import Cart from "./components/Cart"
 import Navbar from "./components/Navbar"
 import CategoryComponent from "./components/CategoryComponent"
 import Footer from "./components/Footer"
+import NotFound from "./components/NotFound"
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route exact path="/product/:productId" Component={ProductDetail} />
           <Route exact path='/category/:categoryId' Component={CategoryComponent} />
           <Route exact path="/cart" Component={Cart} />
+          <Route exact path="/*" Component={NotFound} />
         </Routes>
         <Footer />
       </Router>
